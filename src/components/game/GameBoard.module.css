@@ -1,0 +1,274 @@
+.gamePage {
+  min-height: calc(100vh - 80px);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.gameHeader {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.gameTitle {
+  font-size: var(--font-size-xl);
+  color: var(--pixel-green-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.gameMode {
+  font-size: var(--font-size-sm);
+  color: var(--pixel-green-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gameContainer {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.boardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.gameBoard {
+  display: grid;
+  gap: 2px;
+  background-color: var(--pixel-green-dark);
+  border: var(--pixel-border-thick);
+  box-shadow: var(--pixel-shadow);
+  padding: 2px;
+}
+
+.gameBoard.standard {
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+}
+
+.gameBoard.fading {
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+}
+
+.gameBoard.fog {
+  grid-template-columns: repeat(5, 60px);
+  grid-template-rows: repeat(5, 60px);
+}
+
+.gameBoard.gravity {
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(6, 60px);
+}
+
+.gameCell {
+  background-color: var(--pixel-green-bright);
+  border: 1px solid var(--pixel-green-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.gameCell:hover {
+  background-color: var(--pixel-green-light);
+  transform: scale(1.05);
+}
+
+.gameCell.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.gameCell.hidden {
+  background-color: var(--pixel-green-dark);
+  color: transparent;
+}
+
+.gameCell.fading {
+  transition: opacity var(--transition-medium);
+}
+
+.gameCell.winner {
+  background-color: var(--gravity-primary);
+  animation: pulse 1s infinite;
+}
+
+.gameStatus {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.currentPlayer {
+  font-size: var(--font-size-md);
+  color: var(--pixel-green-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.gameResult {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  padding: var(--space-md);
+  border: var(--pixel-border);
+  background-color: var(--pixel-green-light);
+  color: var(--pixel-green-dark);
+}
+
+.gameResult.winner {
+  background-color: var(--gravity-primary);
+  animation: bounce 0.5s ease-out;
+}
+
+.gameResult.draw {
+  background-color: var(--fog-primary);
+  color: white;
+}
+
+.gameControls {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sidePanel {
+  background-color: var(--pixel-green-bright);
+  border: var(--pixel-border);
+  box-shadow: var(--pixel-shadow);
+  padding: var(--space-lg);
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.panelTitle {
+  font-size: var(--font-size-md);
+  color: var(--pixel-green-dark);
+  margin-bottom: var(--space-md);
+  text-align: center;
+  border-bottom: var(--pixel-border);
+  padding-bottom: var(--space-sm);
+}
+
+.moveHistory {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: var(--space-md);
+}
+
+.moveItem {
+  font-size: var(--font-size-xs);
+  color: var(--pixel-green-medium);
+  padding: var(--space-xs);
+  border-bottom: 1px solid rgba(48, 98, 48, 0.2);
+}
+
+.gameStats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--pixel-green-medium);
+}
+
+.aiThinking {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding: var(--space-md);
+  background-color: rgba(78, 205, 196, 0.1);
+  border: var(--pixel-border);
+  margin-bottom: var(--space-md);
+}
+
+.thinkingText {
+  font-size: var(--font-size-sm);
+  color: var(--fog-primary);
+}
+
+.backToEntry {
+  margin-top: var(--space-lg);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .gamePage {
+    padding: var(--space-md);
+  }
+
+  .gameContainer {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .gameBoard.standard,
+  .gameBoard.fading {
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+  }
+
+  .gameBoard.fog {
+    grid-template-columns: repeat(5, 45px);
+    grid-template-rows: repeat(5, 45px);
+  }
+
+  .gameBoard.gravity {
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(6, 45px);
+  }
+
+  .gameCell {
+    font-size: var(--font-size-md);
+  }
+
+  .sidePanel {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .gameBoard.standard,
+  .gameBoard.fading {
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(3, 50px);
+  }
+
+  .gameBoard.fog {
+    grid-template-columns: repeat(5, 35px);
+    grid-template-rows: repeat(5, 35px);
+  }
+
+  .gameBoard.gravity {
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(6, 35px);
+  }
+
+  .gameCell {
+    font-size: var(--font-size-sm);
+  }
+
+  .gameControls {
+    flex-direction: column;
+    width: 100%;
+  }
+}

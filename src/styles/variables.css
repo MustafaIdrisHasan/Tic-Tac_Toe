@@ -1,0 +1,52 @@
+:root {
+  /* Color Palette - Pink/Purple Theme */
+  --pixel-green-dark: #5C1576;      /* Deep Purple */
+  --pixel-green-medium: #FC47BB;    /* Accent Pink */
+  --pixel-green-light: #F4B0B0;     /* Light Pink */
+  --pixel-green-bright: #FD7282;    /* Primary Pink */
+  
+  /* Mode-specific colors */
+  --fading-primary: #FC47BB;        /* Accent Pink */
+  --fading-secondary: #F4B0B0;      /* Light Pink */
+  --fog-primary: #5C1576;           /* Deep Purple */
+  --fog-secondary: #010B5D;         /* Navy Blue */
+  --gravity-primary: #FD7282;       /* Primary Pink */
+  --gravity-secondary: #F4B0B0;     /* Light Pink */
+  
+  /* Typography */
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-size-xs: 8px;
+  --font-size-sm: 10px;
+  --font-size-md: 12px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-size-xxl: 24px;
+  
+  /* Spacing (8px grid system) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  
+  /* Borders and Effects */
+  --pixel-border: 2px solid var(--pixel-green-dark);
+  --pixel-border-thick: 4px solid var(--pixel-green-dark);
+  --pixel-shadow: 4px 4px 0px var(--pixel-green-dark);
+  --pixel-shadow-hover: 6px 6px 0px var(--pixel-green-dark);
+
+  /* Additional accent color */
+  --navy-blue: #010B5D;
+  
+  /* Animations */
+  --transition-fast: 0.15s ease-out;
+  --transition-medium: 0.3s ease-out;
+  --transition-slow: 0.5s ease-out;
+  
+  /* Z-index layers */
+  --z-background: 0;
+  --z-content: 10;
+  --z-overlay: 100;
+  --z-modal: 1000;
+}
