@@ -24,8 +24,8 @@ const LandingPage = () => {
   const features = [
     {
       icon: '⚡',
-      title: 'Three Unique Modes',
-      description: 'Experience classic tic-tac-toe with exciting twists: Fading Marks, Fog of War, and Gravity Drop.'
+      title: 'Four Unique Modes',
+      description: 'Experience classic tic-tac-toe and exciting variants: Fading Marks, Fog of War, and Gravity Drop.'
     },
     {
       icon: '🤖',
@@ -57,6 +57,7 @@ const LandingPage = () => {
         size="large"
         className={styles.enterButton}
         onClick={handleEnterGame}
+        aria-label="Enter game and choose mode"
       >
         ENTER GAME
       </PixelButton>
