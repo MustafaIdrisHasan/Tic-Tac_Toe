@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import styles from './shared.module.css';
 
@@ -37,4 +38,14 @@ const PixelButton = ({
   );
 };
 
-export default PixelButton;
+PixelButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(['default', 'primary', 'secondary', 'danger']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  className: PropTypes.string,
+  type: PropTypes.string
+};
+
+export default React.memo(PixelButton);

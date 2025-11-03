@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import styles from './GameBoard.module.css';
 
@@ -45,4 +46,15 @@ const GameCell = ({
   );
 };
 
-export default GameCell;
+GameCell.propTypes = {
+  value: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  hidden: PropTypes.bool,
+  opacity: PropTypes.number,
+  isWinner: PropTypes.bool,
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired
+};
+
+export default React.memo(GameCell);
