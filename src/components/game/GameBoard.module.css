@@ -35,6 +35,18 @@
   max-width: 1200px;
 }
 
+@media (max-width: 768px) {
+  .gameContainer {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .sidePanel {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 .boardContainer {
   display: flex;
   flex-direction: column;

@@ -5,8 +5,8 @@ export class AIPlayer {
   }
   
   async getMove(gameInstance) {
-    // Add realistic thinking delay
-    await new Promise(resolve => setTimeout(resolve, 300 + Math.random() * 700));
+    // Add realistic thinking delay (reduced for better UX)
+    await new Promise(resolve => setTimeout(resolve, 200 + Math.random() * 400));
     
     switch (this.difficulty) {
       case 'easy':
