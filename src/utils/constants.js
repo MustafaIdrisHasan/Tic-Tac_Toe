@@ -28,7 +28,9 @@ export const ROUTES = {
   HOME: '/',
   MODES: '/modes',
   ENTRY: '/entry',
-  GAME: '/game'
+  GAME: '/game',
+  STATS: '/stats',
+  SETTINGS: '/settings'
 };
 
 export const BREAKPOINTS = {
