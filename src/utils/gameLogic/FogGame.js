@@ -8,6 +8,34 @@ export class FogGame extends BaseGame {
     // Reveal center cell initially
     this.visibility[2][2] = true;
   }
+
+  saveStateForUndo() {
+    const baseState = {
+      board: this.board.map(row => [...row]),
+      currentPlayer: this.currentPlayer,
+      winner: this.winner,
+      gameOver: this.gameOver,
+      moveHistory: [...this.moveHistory],
+      turnCount: this.turnCount,
+      visibility: this.visibility.map(row => [...row])
+    };
+    this.undoStack.push(baseState);
+  }
+
+  undo() {
+    if (this.undoStack.length === 0 || this.gameOver) return false;
+    
+    const previousState = this.undoStack.pop();
+    this.board = previousState.board.map(row => [...row]);
+    this.currentPlayer = previousState.currentPlayer;
+    this.winner = previousState.winner;
+    this.gameOver = previousState.gameOver;
+    this.moveHistory = [...previousState.moveHistory];
+    this.turnCount = previousState.turnCount;
+    this.visibility = previousState.visibility.map(row => [...row]);
+    
+    return true;
+  }
   
   makeMove(x, y, player = this.currentPlayer) {
     const success = super.makeMove(x, y, player);
@@ -48,21 +76,9 @@ export class FogGame extends BaseGame {
   }
   
   clone() {
-    const cloned = new FogGame({
-      width: this.width,
-      height: this.height,
-      winCondition: this.winCondition,
-      revealRadius: this.revealRadius
-    });
-    
-    cloned.board = this.board.map(row => [...row]);
-    cloned.currentPlayer = this.currentPlayer;
-    cloned.winner = this.winner;
-    cloned.gameOver = this.gameOver;
-    cloned.moveHistory = [...this.moveHistory];
-    cloned.turnCount = this.turnCount;
+    const cloned = super.clone();
     cloned.visibility = this.visibility.map(row => [...row]);
-    
+    cloned.revealRadius = this.revealRadius;
     return cloned;
   }
   

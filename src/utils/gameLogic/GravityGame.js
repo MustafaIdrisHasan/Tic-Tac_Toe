@@ -4,6 +4,9 @@ export class GravityGame extends BaseGame {
   constructor(config = {}) {
     super({ width: 3, height: 6, winCondition: 4, ...config });
   }
+
+  // GravityGame uses the base undo functionality since it doesn't have additional state
+  // The undo will work correctly because makeMove handles column/row conversion
   
   makeMove(column, _, player = this.currentPlayer) {
     if (column < 0 || column >= this.width || this.gameOver) {
@@ -40,20 +43,7 @@ export class GravityGame extends BaseGame {
   }
   
   clone() {
-    const cloned = new GravityGame({
-      width: this.width,
-      height: this.height,
-      winCondition: this.winCondition
-    });
-    
-    cloned.board = this.board.map(row => [...row]);
-    cloned.currentPlayer = this.currentPlayer;
-    cloned.winner = this.winner;
-    cloned.gameOver = this.gameOver;
-    cloned.moveHistory = [...this.moveHistory];
-    cloned.turnCount = this.turnCount;
-    
-    return cloned;
+    return super.clone();
   }
   
   getDropRow(column) {
