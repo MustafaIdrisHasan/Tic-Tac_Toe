@@ -2,6 +2,7 @@
   "name": "tic-tac-toe-variants",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@fontsource/press-start-2p": "^4.5.9",
     "@testing-library/dom": "^10.4.0",
