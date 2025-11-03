@@ -39,7 +39,7 @@ export const useLocalStorage = (key, initialValue) => {
 
 // Hook for managing game statistics
 export const useGameStats = () => {
-  const [stats, setStats, removeStats] = useLocalStorage('gameStats', {
+  const [stats, setStats, removeStats] = useLocalStorage('tic_tac_toe_stats', {
     gamesPlayed: 0,
     gamesWon: 0,
     gamesLost: 0,
@@ -114,5 +114,33 @@ export const useGameStats = () => {
     stats,
     updateStats,
     resetStats
+  };
+};
+
+// Hook for managing game settings
+export const useGameSettings = () => {
+  const [settings, setSettings, removeSettings] = useLocalStorage('tic_tac_toe_settings', {
+    soundEnabled: true,
+    animationsEnabled: true,
+    autoSave: true,
+    theme: 'pixel',
+    difficulty: 'medium'
+  });
+
+  const updateSetting = (key, value) => {
+    setSettings(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+  const resetSettings = () => {
+    removeSettings();
+  };
+
+  return {
+    settings,
+    updateSetting,
+    resetSettings
   };
 };

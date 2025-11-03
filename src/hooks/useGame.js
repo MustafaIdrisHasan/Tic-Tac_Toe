@@ -2,6 +2,8 @@ import { useState, useCallback, useEffect } from 'react';
 import { createGame } from '../utils/gameLogic/gameFactory';
 import { AIPlayer } from '../utils/gameLogic/aiLogic';
 import { OPPONENT_TYPES, AI_DIFFICULTIES } from '../utils/constants';
+import { useGameStats, useGameSettings } from './useLocalStorage';
+import { soundManager } from '../utils/soundManager';
 
 export const useGame = (mode, opponent = OPPONENT_TYPES.TEST, difficulty = AI_DIFFICULTIES.MEDIUM) => {
   const [game, setGame] = useState(null);
@@ -14,6 +16,14 @@ export const useGame = (mode, opponent = OPPONENT_TYPES.TEST, difficulty = AI_DI
     endTime: null,
     duration: 0
   });
+  const { updateStats } = useGameStats();
+  const { settings } = useGameSettings();
+
+  // Sync sound manager with settings
+  useEffect(() => {
+    soundManager.setEnabled(settings.soundEnabled);
+    soundManager.setVolume(0.5);
+  }, [settings.soundEnabled]);
 
   // Initialize game
   useEffect(() => {
@@ -47,6 +57,7 @@ export const useGame = (mode, opponent = OPPONENT_TYPES.TEST, difficulty = AI_DI
 
     const success = game.makeMove(x, y);
     if (success) {
+      soundManager.play('move');
       setGameState(game.getGameState());
       setGameStats(prev => ({
         ...prev,
@@ -84,16 +95,38 @@ export const useGame = (mode, opponent = OPPONENT_TYPES.TEST, difficulty = AI_DI
 
       // Update end time if game is over
       if (game.gameOver) {
-        setGameStats(prev => ({
-          ...prev,
-          endTime: Date.now(),
-          duration: Date.now() - prev.startTime
-        }));
+        // Play appropriate sound
+        if (game.winner) {
+          soundManager.play('win');
+        } else {
+          soundManager.play('draw');
+        }
+        
+        setGameStats(prev => {
+          const finalStats = {
+            movesCount: prev.movesCount + 1,
+            startTime: prev.startTime,
+            endTime: Date.now(),
+            duration: Date.now() - prev.startTime
+          };
+          
+          // Update persistent stats only for AI games
+          if (opponent === OPPONENT_TYPES.AI && mode) {
+            updateStats({
+              mode,
+              winner: game.winner,
+              movesCount: finalStats.movesCount,
+              duration: finalStats.duration
+            });
+          }
+          
+          return finalStats;
+        });
       }
     }
 
     return success;
-  }, [game, opponent, aiPlayer, mode]);
+  }, [game, opponent, aiPlayer, mode, updateStats, settings]);
 
   const resetGame = useCallback(() => {
     if (game) {
@@ -110,10 +143,17 @@ export const useGame = (mode, opponent = OPPONENT_TYPES.TEST, difficulty = AI_DI
   }, [game]);
 
   const undoMove = useCallback(() => {
-    // This would require implementing undo functionality in the game classes
-    // For now, we'll just reset the game
-    resetGame();
-  }, [resetGame]);
+    if (game && game.canUndo && game.canUndo()) {
+      const success = game.undo();
+      if (success) {
+        setGameState(game.getGameState());
+        setGameStats(prev => ({
+          ...prev,
+          movesCount: Math.max(0, prev.movesCount - 1)
+        }));
+      }
+    }
+  }, [game]);
 
   return {
     game,
@@ -127,6 +167,7 @@ export const useGame = (mode, opponent = OPPONENT_TYPES.TEST, difficulty = AI_DI
     winner: gameState?.winner,
     currentPlayer: gameState?.currentPlayer,
     board: gameState?.board || [],
-    moveHistory: gameState?.moveHistory || []
+    moveHistory: gameState?.moveHistory || [],
+    canUndo: game?.canUndo ? game.canUndo() : false
   };
 };
