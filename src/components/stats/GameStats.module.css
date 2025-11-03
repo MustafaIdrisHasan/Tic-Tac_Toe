@@ -1,0 +1,173 @@
+.statsPage {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: var(--bg-color, #1a1a2e);
+  color: var(--text-color, #fff);
+}
+
+.statsContainer {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.pageTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-color, #0f0);
+  text-shadow: 3px 3px 0 var(--shadow-color, #000);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.statCard {
+  background: var(--card-bg, #16213e);
+  border: 3px solid var(--border-color, #0f0);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 5px 5px 0 var(--shadow-color, #000);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.statCard:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--shadow-color, #000);
+}
+
+.statIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.statValue {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.5rem;
+  color: var(--primary-color, #0f0);
+  margin: 0.5rem 0;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #aaa);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modeStatsSection {
+  margin: 3rem 0;
+}
+
+.sectionTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color, #0f0);
+  text-align: center;
+}
+
+.modeStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.modeStatCard {
+  background: var(--card-bg, #16213e);
+  border: 2px solid var(--border-color, #0f0);
+  padding: 1.5rem;
+  box-shadow: 4px 4px 0 var(--shadow-color, #000);
+}
+
+.modeStatTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9rem;
+  color: var(--primary-color, #0f0);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modeStatDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modeStatRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color, #333);
+}
+
+.modeStatRow:last-child {
+  border-bottom: none;
+}
+
+.modeStatRow span:first-child {
+  color: var(--text-secondary, #aaa);
+}
+
+.modeStatRow span:last-child {
+  font-weight: bold;
+  color: var(--primary-color, #0f0);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.resetButton,
+.backButton {
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .statsPage {
+    padding: 1rem;
+  }
+
+  .pageTitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .statCard {
+    padding: 1rem;
+  }
+
+  .statIcon {
+    font-size: 2rem;
+  }
+
+  .statValue {
+    font-size: 1.2rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .resetButton,
+  .backButton {
+    width: 100%;
+  }
+}
+

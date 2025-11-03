@@ -1,0 +1,176 @@
+.settingsPage {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: var(--bg-color, #1a1a2e);
+  color: var(--text-color, #fff);
+}
+
+.settingsContainer {
+  max-width: 800px;
+  width: 100%;
+}
+
+.pageTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-color, #0f0);
+  text-shadow: 3px 3px 0 var(--shadow-color, #000);
+}
+
+.settingsSection {
+  background: var(--card-bg, #16213e);
+  border: 3px solid var(--border-color, #0f0);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 5px 5px 0 var(--shadow-color, #000);
+}
+
+.sectionTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  color: var(--primary-color, #0f0);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.settingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color, #333);
+}
+
+.settingItem:last-child {
+  border-bottom: none;
+}
+
+.settingInfo {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.settingLabel {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--text-color, #fff);
+}
+
+.settingDescription {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #aaa);
+  margin: 0;
+}
+
+.toggleButton {
+  width: 60px;
+  height: 30px;
+  background: var(--bg-secondary, #333);
+  border: 2px solid var(--border-color, #0f0);
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+  padding: 0;
+}
+
+.toggleButton:hover {
+  background: var(--bg-secondary, #444);
+}
+
+.toggleButton.active {
+  background: var(--primary-color, #0f0);
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: var(--text-color, #fff);
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 2px 2px 0 var(--shadow-color, #000);
+}
+
+.toggleButton.active .toggleSlider {
+  transform: translateX(30px);
+}
+
+.difficultyButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.difficultyButton {
+  min-width: 80px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.resetButton,
+.backButton {
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .settingsPage {
+    padding: 1rem;
+  }
+
+  .pageTitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .settingsSection {
+    padding: 1.5rem;
+  }
+
+  .settingItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .settingInfo {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .toggleButton {
+    align-self: flex-end;
+  }
+
+  .difficultyButtons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .difficultyButton {
+    flex: 1;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .resetButton,
+  .backButton {
+    width: 100%;
+  }
+}
+
