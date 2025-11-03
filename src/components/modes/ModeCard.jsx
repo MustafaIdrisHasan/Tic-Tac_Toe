@@ -63,8 +63,10 @@ const ModeCard = ({ mode, config }) => {
       onClick={handleCardClick}
       role="button"
       tabIndex={0}
+      aria-label={`Select ${config.name} mode, difficulty: ${config.difficulty}`}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
           handleCardClick();
         }
       }}

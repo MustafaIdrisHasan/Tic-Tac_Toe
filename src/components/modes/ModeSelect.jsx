@@ -14,18 +14,15 @@ const ModeSelect = () => {
     navigate(ROUTES.HOME);
   };
 
-  // Filter out standard mode for the variants showcase
-  const variantModes = gameModes.filter(mode => mode.mode !== 'standard');
-
   return (
     <div className={styles.modeSelectPage}>
       <h1 className={styles.pageTitle}>Choose Your Game Mode</h1>
       <p className={styles.pageSubtitle}>
-        Select from three unique tic-tac-toe variants, each with its own strategic challenges and gameplay mechanics.
+        Select from classic tic-tac-toe or unique variants, each with its own strategic challenges and gameplay mechanics.
       </p>
 
       <div className={styles.modesGrid}>
-        {variantModes.map((modeData) => (
+        {gameModes.map((modeData) => (
           <ModeCard
             key={modeData.mode}
             mode={modeData.mode}
