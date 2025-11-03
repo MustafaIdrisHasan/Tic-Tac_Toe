@@ -52,6 +52,13 @@ const GameEntry = () => {
           'Win by getting 4 in a row (horizontal, vertical, or diagonal)',
           'Think vertically - plan your column strategy'
         ];
+      case 'standard':
+        return [
+          'Classic 3x3 tic-tac-toe game',
+          'Players take turns placing X and O marks',
+          'Win by getting 3 in a row (horizontal, vertical, or diagonal)',
+          'If all cells are filled with no winner, it\'s a draw'
+        ];
       default:
         return ['Standard tic-tac-toe rules apply'];
     }
@@ -65,6 +72,8 @@ const GameEntry = () => {
         return '🌫️';
       case 'gravity':
         return '⬇️';
+      case 'standard':
+        return '⭕';
       default:
         return '⭕';
     }

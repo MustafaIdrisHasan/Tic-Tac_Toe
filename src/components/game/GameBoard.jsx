@@ -21,11 +21,13 @@ const GameBoard = () => {
     gameStats,
     makeMove,
     resetGame,
+    undoMove,
     isGameOver,
     winner,
     currentPlayer,
     board,
-    moveHistory
+    moveHistory,
+    canUndo
   } = useGame(mode, opponent, difficulty);
 
   // Redirect if no mode is specified
@@ -150,8 +152,8 @@ const GameBoard = () => {
 
       <div className={styles.gameContainer}>
         <div className={styles.boardContainer}>
-          <div className={styles.gameStatus}>
-            <div className={styles.currentPlayer}>
+          <div className={styles.gameStatus} role="status" aria-live="polite">
+            <div className={styles.currentPlayer} aria-label="Current game status">
               {getGameStatusText()}
             </div>
             {isGameOver && (
@@ -164,11 +166,22 @@ const GameBoard = () => {
             )}
           </div>
 
-          <div className={clsx(styles.gameBoard, styles[mode])}>
+          <div 
+            className={clsx(styles.gameBoard, styles[mode])}
+            role="grid"
+            aria-label={`${config.name} game board`}
+          >
             {renderBoard()}
           </div>
 
           <div className={styles.gameControls}>
+            <PixelButton 
+              onClick={undoMove}
+              disabled={!canUndo || isAIThinking}
+              title={canUndo ? "Undo last move" : "Cannot undo"}
+            >
+              ↩️ Undo
+            </PixelButton>
             <PixelButton onClick={resetGame}>
               🔄 Reset Game
             </PixelButton>
@@ -182,7 +195,7 @@ const GameBoard = () => {
           </div>
         </div>
 
-        <div className={styles.sidePanel}>
+        <aside className={styles.sidePanel} aria-label="Game information">
           <h3 className={styles.panelTitle}>Game Info</h3>
           
           <div className={styles.gameStats}>
@@ -217,7 +230,7 @@ const GameBoard = () => {
               </div>
             </>
           )}
-        </div>
+        </aside>
       </div>
     </div>
   );
