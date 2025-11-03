@@ -6,6 +6,34 @@ export class FadingGame extends BaseGame {
     this.markLifespan = config.markLifespan || 4;
     this.markAges = Array(this.height).fill().map(() => Array(this.width).fill(0));
   }
+
+  saveStateForUndo() {
+    const baseState = {
+      board: this.board.map(row => [...row]),
+      currentPlayer: this.currentPlayer,
+      winner: this.winner,
+      gameOver: this.gameOver,
+      moveHistory: [...this.moveHistory],
+      turnCount: this.turnCount,
+      markAges: this.markAges.map(row => [...row])
+    };
+    this.undoStack.push(baseState);
+  }
+
+  undo() {
+    if (this.undoStack.length === 0 || this.gameOver) return false;
+    
+    const previousState = this.undoStack.pop();
+    this.board = previousState.board.map(row => [...row]);
+    this.currentPlayer = previousState.currentPlayer;
+    this.winner = previousState.winner;
+    this.gameOver = previousState.gameOver;
+    this.moveHistory = [...previousState.moveHistory];
+    this.turnCount = previousState.turnCount;
+    this.markAges = previousState.markAges.map(row => [...row]);
+    
+    return true;
+  }
   
   makeMove(x, y, player = this.currentPlayer) {
     const success = super.makeMove(x, y, player);
@@ -43,23 +71,11 @@ export class FadingGame extends BaseGame {
     super.reset();
     this.markAges = Array(this.height).fill().map(() => Array(this.width).fill(0));
   }
-  
+
   clone() {
-    const cloned = new FadingGame({
-      width: this.width,
-      height: this.height,
-      winCondition: this.winCondition,
-      markLifespan: this.markLifespan
-    });
-    
-    cloned.board = this.board.map(row => [...row]);
-    cloned.currentPlayer = this.currentPlayer;
-    cloned.winner = this.winner;
-    cloned.gameOver = this.gameOver;
-    cloned.moveHistory = [...this.moveHistory];
-    cloned.turnCount = this.turnCount;
+    const cloned = super.clone();
     cloned.markAges = this.markAges.map(row => [...row]);
-    
+    cloned.markLifespan = this.markLifespan;
     return cloned;
   }
   

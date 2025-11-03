@@ -9,10 +9,14 @@ export class BaseGame {
     this.gameOver = false;
     this.moveHistory = [];
     this.turnCount = 0;
+    this.undoStack = [];
   }
   
   makeMove(x, y, player = this.currentPlayer) {
     if (!this.isValidMove(x, y)) return false;
+    
+    // Save state for undo
+    this.saveStateForUndo();
     
     this.board[y][x] = player;
     this.moveHistory.push({ x, y, player, turn: this.turnCount });
@@ -24,6 +28,35 @@ export class BaseGame {
     }
     
     return true;
+  }
+
+  saveStateForUndo() {
+    this.undoStack.push({
+      board: this.board.map(row => [...row]),
+      currentPlayer: this.currentPlayer,
+      winner: this.winner,
+      gameOver: this.gameOver,
+      moveHistory: [...this.moveHistory],
+      turnCount: this.turnCount
+    });
+  }
+
+  undo() {
+    if (this.undoStack.length === 0 || this.gameOver) return false;
+    
+    const previousState = this.undoStack.pop();
+    this.board = previousState.board.map(row => [...row]);
+    this.currentPlayer = previousState.currentPlayer;
+    this.winner = previousState.winner;
+    this.gameOver = previousState.gameOver;
+    this.moveHistory = [...previousState.moveHistory];
+    this.turnCount = previousState.turnCount;
+    
+    return true;
+  }
+
+  canUndo() {
+    return this.undoStack.length > 0 && !this.gameOver;
   }
   
   isValidMove(x, y) {
@@ -97,6 +130,7 @@ export class BaseGame {
     this.gameOver = false;
     this.moveHistory = [];
     this.turnCount = 0;
+    this.undoStack = [];
   }
   
   getValidMoves() {
@@ -124,6 +158,11 @@ export class BaseGame {
     cloned.gameOver = this.gameOver;
     cloned.moveHistory = [...this.moveHistory];
     cloned.turnCount = this.turnCount;
+    cloned.undoStack = this.undoStack.map(state => ({
+      ...state,
+      board: state.board.map(row => [...row]),
+      moveHistory: [...state.moveHistory]
+    }));
     
     return cloned;
   }
