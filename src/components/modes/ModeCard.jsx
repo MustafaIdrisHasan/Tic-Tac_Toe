@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import styles from './ModeSelect.module.css';
@@ -94,4 +95,13 @@ const ModeCard = ({ mode, config }) => {
   );
 };
 
-export default ModeCard;
+ModeCard.propTypes = {
+  mode: PropTypes.string.isRequired,
+  config: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    difficulty: PropTypes.string.isRequired
+  }).isRequired
+};
+
+export default React.memo(ModeCard);

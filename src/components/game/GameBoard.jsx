@@ -157,7 +157,7 @@ const GameBoard = () => {
               {getGameStatusText()}
             </div>
             {isGameOver && (
-              <div className={clsx(styles.gameResult, {
+              <div className={clsx(styles.gameResult, 'animate-pulse', {
                 [styles.winner]: winner,
                 [styles.draw]: !winner
               })}>
@@ -167,7 +167,7 @@ const GameBoard = () => {
           </div>
 
           <div 
-            className={clsx(styles.gameBoard, styles[mode])}
+            className={clsx(styles.gameBoard, styles[mode], 'animate-fadeIn')}
             role="grid"
             aria-label={`${config.name} game board`}
           >
