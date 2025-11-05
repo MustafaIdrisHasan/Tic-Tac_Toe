@@ -166,11 +166,26 @@
   margin: 0;
 }
 
+.wittyTagline {
+  font-size: var(--font-size-lg);
+  color: var(--accent-yellow);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
+  text-align: center;
+  opacity: 1;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  text-shadow: 2px 2px 0 var(--grid-color);
+  font-family: var(--font-pixel);
+}
+
 .typewriterText {
   display: inline-block;
   font-family: var(--font-pixel);
   white-space: nowrap;
   min-height: 1.5em;
+  transition: color 0.3s ease;
 }
 
 .cursor {
@@ -196,6 +211,11 @@
   
   .mainTitle {
     font-size: var(--font-size-xl);
+    letter-spacing: 1px;
+  }
+  
+  .wittyTagline {
+    font-size: var(--font-size-md);
     letter-spacing: 1px;
   }
   
@@ -226,6 +246,10 @@
 @media (max-width: 480px) {
   .mainTitle {
     font-size: var(--font-size-lg);
+  }
+  
+  .wittyTagline {
+    font-size: var(--font-size-sm);
   }
   
   .tagline {

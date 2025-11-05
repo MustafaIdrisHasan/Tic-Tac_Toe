@@ -8,8 +8,18 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [colorIndex, setColorIndex] = useState(0);
   
   const text = 'TIC-TAC-TOE VARIANTS';
+  
+  // Colors to cycle through
+  const colors = [
+    'var(--text-color)',      // Default text color
+    'var(--accent-red)',      // Red
+    'var(--accent-yellow)',   // Yellow
+    'var(--accent-cyan)',     // Cyan
+    'var(--highlight-color)', // Highlight color
+  ];
 
   useEffect(() => {
     let timeout;
@@ -18,6 +28,8 @@ const LandingPage = () => {
       // Pause before deleting
       timeout = setTimeout(() => setIsDeleting(true), 2000);
     } else if (isDeleting && displayedText === '') {
+      // Reset color when starting a new cycle
+      setColorIndex(0);
       // Pause before typing again
       timeout = setTimeout(() => setIsDeleting(false), 500);
     } else if (isDeleting) {
@@ -31,9 +43,14 @@ const LandingPage = () => {
         setDisplayedText(text.substring(0, displayedText.length + 1));
       }, 100);
     }
+    
+    // Change color every few characters during typing or deleting
+    if (displayedText.length > 0 && displayedText.length % 4 === 0) {
+      setColorIndex((prev) => (prev + 1) % colors.length);
+    }
 
     return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, text]);
+  }, [displayedText, isDeleting, text, colors.length]);
 
   const handleEnterGame = () => {
     navigate(ROUTES.MODES);
@@ -64,7 +81,10 @@ const LandingPage = () => {
       <div className={styles.titleContainer}>
         <div className={styles.typewriterContainer}>
           <h1 className={styles.mainTitle}>
-            <span className={styles.typewriterText}>
+            <span 
+              className={styles.typewriterText}
+              style={{ color: colors[colorIndex] }}
+            >
               {displayedText}
               <span className={styles.cursor}>|</span>
             </span>
@@ -75,6 +95,10 @@ const LandingPage = () => {
         </p>
         <p className={styles.subtitle}>Choose Your Challenge</p>
       </div>
+      
+      <p className={styles.wittyTagline}>
+        Where Classic Meets Chaos: Four Ways to Outsmart Your Opponent!
+      </p>
 
       <PixelButton
         variant="primary"
