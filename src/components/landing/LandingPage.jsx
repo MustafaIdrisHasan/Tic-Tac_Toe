@@ -8,7 +8,24 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const fullText = 'TIC-TAC-TOE VARIANTS';
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  
+  const phrases = [
+    'TIC-TAC-TOE VARIANTS',
+    'Four Unique Game Modes',
+    'Classic & Modern Twists',
+    'Fading Marks Challenge',
+    'Fog of War Mystery',
+    'Gravity Drop Physics',
+    'Smart AI Opponent',
+    'Retro Pixel Art Style',
+    'Nostalgic Gaming Experience',
+    'Multiple Difficulty Levels',
+    'Challenge Your Mind',
+    'Strategic Gameplay'
+  ];
+  
+  const fullText = phrases[phraseIndex];
 
   useEffect(() => {
     let timeout;
@@ -17,7 +34,8 @@ const LandingPage = () => {
       // Pause before deleting
       timeout = setTimeout(() => setIsDeleting(true), 2000);
     } else if (isDeleting && displayedText === '') {
-      // Pause before typing again
+      // Move to next phrase and pause before typing again
+      setPhraseIndex((prev) => (prev + 1) % phrases.length);
       timeout = setTimeout(() => setIsDeleting(false), 500);
     } else if (isDeleting) {
       // Delete character
@@ -32,7 +50,7 @@ const LandingPage = () => {
     }
 
     return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, fullText]);
+  }, [displayedText, isDeleting, fullText, phrases.length]);
 
   const handleEnterGame = () => {
     navigate(ROUTES.MODES);
