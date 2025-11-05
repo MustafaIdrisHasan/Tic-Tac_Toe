@@ -63,7 +63,7 @@
   }
 }
 
-/* VHS noise/static effect */
+/* Enhanced VHS noise/static effect */
 .vhs-transition-overlay.active::before {
   content: '';
   position: absolute;
@@ -75,12 +75,14 @@
     repeating-linear-gradient(
       0deg,
       transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.08) 1px,
+      rgba(255, 255, 255, 0.08) 2px,
       transparent 2px,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(255, 255, 255, 0.03) 4px
+      rgba(0, 255, 255, 0.05) 3px
     );
-  animation: vhsNoise 0.1s infinite;
-  opacity: 0.8;
+  animation: vhsNoise 0.08s infinite;
+  opacity: 1;
 }
 
 @keyframes vhsNoise {
@@ -140,17 +142,24 @@
   0%, 100% {
     opacity: 0;
   }
-  48%, 52% {
-    opacity: 0.4;
+  45% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  55% {
+    opacity: 0.3;
   }
 }
 
-/* Old School theme specific styles */
+/* Old School theme specific styles - Enhanced */
 .old-school-theme {
-  --scanline-opacity: 0.15;
+  --scanline-opacity: 0.35;
+  --crt-brightness: 1.1;
 }
 
-/* Scanline effect for old school theme */
+/* Stronger scanline effect for old school theme */
 .old-school-theme::before {
   content: '';
   position: fixed;
@@ -158,16 +167,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
+  background: repeating-linear-gradient(
     to bottom,
-    rgba(18, 16, 16, 0) 50%,
-    rgba(0, 0, 0, 0.25) 50%
+    rgba(0, 255, 0, 0.05) 0px,
+    rgba(0, 0, 0, 0.3) 1px,
+    rgba(0, 255, 0, 0.03) 2px,
+    transparent 3px
   );
-  background-size: 100% 2px;
+  background-size: 100% 4px;
   pointer-events: none;
   z-index: 9998;
   opacity: var(--scanline-opacity);
-  animation: scanlineMove 8s linear infinite;
+  animation: scanlineMove 6s linear infinite;
 }
 
 @keyframes scanlineMove {
@@ -179,7 +190,7 @@
   }
 }
 
-/* Screen flicker for old school theme */
+/* Enhanced screen flicker for old school theme */
 .old-school-theme::after {
   content: '';
   position: fixed;
@@ -187,10 +198,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 255, 0, 0.05);
   pointer-events: none;
   z-index: 9997;
-  animation: flicker 0.15s infinite;
+  animation: flicker 0.12s infinite;
 }
 
 @keyframes flicker {
@@ -264,7 +275,7 @@
   transform: perspective(1000px);
 }
 
-/* Slight vignette for old school theme */
+/* Enhanced vignette for old school theme */
 body.old-school-theme {
   position: relative;
 }
@@ -279,10 +290,37 @@ body.old-school-theme .app::before {
   background: radial-gradient(
     ellipse at center,
     transparent 0%,
-    transparent 60%,
-    rgba(0, 0, 0, 0.3) 100%
+    transparent 50%,
+    rgba(0, 0, 0, 0.5) 100%
   );
   pointer-events: none;
   z-index: 9996;
+}
+
+/* CRT screen glow effect */
+body.old-school-theme .app::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 255, 0, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 9995;
+  animation: crtGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes crtGlow {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 

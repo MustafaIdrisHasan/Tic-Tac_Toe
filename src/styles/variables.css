@@ -62,9 +62,9 @@
 
 /* Dark Mode - 80s Neon CRT Aesthetic */
 .dark-mode {
-  /* 80s Neon CRT Monitor Style */
-  --bg-color: #0A0E27;  /* Deep blue-black - CRT screen off */
-  --bg-secondary: #151932;
+  /* 80s Neon CRT Monitor Style - Enhanced Contrast */
+  --bg-color: #000000;  /* Pure black - like CRT screen in dark room */
+  --bg-secondary: #0A0A1A;  /* Very dark blue */
   --grid-color: #00FFFF;  /* Bright cyan - classic neon */
   --text-color: #00FF41;  /* Matrix green - bright neon green */
   --highlight-color: #FF10F0;  /* Hot magenta - neon pink */
@@ -95,14 +95,14 @@
 
 /* Dark mode button backgrounds with neon glow */
 .dark-mode .pixelButton {
-  background-color: #1A1A3E;
+  background-color: #0D0D1F;
   color: var(--text-color);
   box-shadow: var(--neon-glow);
   border-color: var(--text-color);
 }
 
 .dark-mode .pixelButton.primary {
-  background-color: var(--bg-secondary);
+  background-color: #1A1A2E;
   color: var(--text-color);
   border-color: var(--text-color);
   box-shadow: var(--neon-glow);
@@ -131,31 +131,31 @@
 
 /* Dark mode card backgrounds with neon borders */
 .dark-mode .card {
-  background-color: rgba(21, 25, 50, 0.8);
+  background-color: rgba(10, 10, 26, 0.95);
   border-color: var(--grid-color);
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 25px rgba(0, 255, 255, 0.3);
 }
 
 .dark-mode .modalContent {
   background-color: var(--bg-color);
   border-color: var(--grid-color);
-  box-shadow: 0 0 20px var(--accent-cyan), 0 0 40px var(--accent-cyan);
+  box-shadow: 0 0 25px var(--accent-cyan), 0 0 50px var(--accent-cyan);
 }
 
 /* Dark mode feature cards with glow */
 .dark-mode .featureCard {
-  background-color: rgba(21, 25, 50, 0.6);
+  background-color: rgba(10, 10, 26, 0.85);
   border-color: var(--text-color);
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.4), 0 0 25px rgba(0, 255, 65, 0.2);
 }
 
 .dark-mode .featureCard:hover {
-  background-color: rgba(21, 25, 50, 0.9);
-  box-shadow: 0 0 20px var(--text-color), 0 0 30px var(--text-color);
+  background-color: rgba(10, 10, 26, 0.95);
+  box-shadow: 0 0 25px var(--text-color), 0 0 40px var(--text-color), 0 0 55px var(--text-color);
   transform: translateY(-4px);
 }
 
-/* Scanline effect for authentic CRT feel */
+/* Scanline effect for authentic CRT feel - Enhanced */
 .dark-mode::before {
   content: '';
   position: fixed;
@@ -166,13 +166,15 @@
   pointer-events: none;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 255, 255, 0.03) 0px,
+    rgba(0, 255, 255, 0.08) 0px,
     transparent 1px,
     transparent 2px,
-    rgba(0, 255, 255, 0.03) 3px
+    rgba(0, 255, 65, 0.05) 3px,
+    transparent 4px,
+    rgba(255, 16, 240, 0.03) 5px
   );
   z-index: 9999;
-  animation: scanlines 10s linear infinite;
+  animation: scanlines 8s linear infinite;
 }
 
 @keyframes scanlines {
@@ -180,6 +182,6 @@
     transform: translateY(0);
   }
   100% {
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
 }

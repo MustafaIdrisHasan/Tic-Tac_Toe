@@ -11,7 +11,7 @@
 }
 
 .titleContainer {
-  margin-bottom: var(--space-xxl);
+  margin-bottom: var(--space-xs);
   position: relative;
 }
 
@@ -49,6 +49,17 @@
   margin-bottom: var(--space-xl);
   position: relative;
   overflow: hidden;
+}
+
+/* Dark mode enter button styling */
+.dark-mode .enterButton {
+  border: 3px solid var(--text-color);
+  box-shadow: 0 0 15px var(--text-color), 0 0 30px var(--text-color), 4px 4px 0 rgba(0, 255, 65, 0.5);
+}
+
+.dark-mode .enterButton:hover:not(:disabled) {
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 20px var(--highlight-color), 0 0 40px var(--highlight-color), 6px 6px 0 rgba(255, 16, 240, 0.6);
 }
 
 .enterButton::before {
@@ -169,8 +180,8 @@
 .wittyTagline {
   font-size: var(--font-size-lg);
   color: var(--accent-yellow);
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-md);
+  margin-top: 0;
+  margin-bottom: var(--space-xxl);
   text-align: center;
   opacity: 1;
   font-weight: bold;

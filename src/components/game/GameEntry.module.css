@@ -97,11 +97,12 @@
 
 .ruleItem {
   font-size: var(--font-size-sm);
-  color: var(--pixel-green-medium);
+  color: var(--text-color);
+  font-weight: 600;
   margin-bottom: var(--space-md);
   padding: var(--space-md);
-  background-color: rgba(244, 176, 176, 0.1);
-  border-left: 4px solid var(--pixel-green-medium);
+  background-color: rgba(0, 0, 0, 0.12);
+  border-left: 4px solid var(--text-color);
   position: relative;
   padding-left: var(--space-lg);
 }
@@ -110,8 +111,13 @@
   content: '▸';
   position: absolute;
   left: var(--space-md);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   font-weight: bold;
+}
+
+.dark-mode .ruleItem {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--text-color);
 }
 
 .actionButtons {

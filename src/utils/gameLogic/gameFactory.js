@@ -38,11 +38,11 @@ export const GAME_CONFIGS = {
     difficulty: 'Hard'
   },
   [GAME_MODES.GRAVITY]: {
-    width: 3,
+    width: 7,
     height: 6,
     winCondition: 4,
     name: 'Gravity Drop',
-    description: 'Pieces fall down like Connect Four. Think vertically!',
+    description: 'Pieces fall down like Connect Four on a 7x6 grid. Think vertically!',
     difficulty: 'Easy'
   }
 };

@@ -2,7 +2,7 @@ import { BaseGame } from './BaseGame.js';
 
 export class GravityGame extends BaseGame {
   constructor(config = {}) {
-    super({ width: 3, height: 6, winCondition: 4, ...config });
+    super({ width: 7, height: 6, winCondition: 4, ...config });
   }
 
   // GravityGame uses the base undo functionality since it doesn't have additional state

@@ -42,6 +42,9 @@ const GameBoard = () => {
   }
 
   const config = getGameConfig(mode);
+  const lastMove = mode === 'gravity' && moveHistory.length > 0
+    ? moveHistory[moveHistory.length - 1]
+    : null;
 
   const handleCellClick = (x, y) => {
     if (mode === 'gravity') {
@@ -100,6 +103,8 @@ const GameBoard = () => {
             disabled={isCellDisabled(x, y)}
             hidden={!isCellVisible(x, y)}
             opacity={getCellOpacity(x, y)}
+            isDropping={mode === 'gravity' && lastMove && lastMove.x === x && lastMove.y === y}
+            dropDistance={y + 1}
             x={x}
             y={y}
           />

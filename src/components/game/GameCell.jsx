@@ -10,6 +10,8 @@ const GameCell = ({
   hidden, 
   opacity = 1, 
   isWinner = false,
+  isDropping = false,
+  dropDistance = 1,
   x, 
   y 
 }) => {
@@ -26,6 +28,13 @@ const GameCell = ({
     }
   };
 
+  const dropStyle = isDropping
+    ? {
+        '--drop-distance': `${dropDistance}`,
+        '--drop-duration': `${Math.min(0.3 + dropDistance * 0.08, 1.25).toFixed(2)}s`
+      }
+    : undefined;
+
   return (
     <div
       className={clsx(styles.gameCell, {
@@ -41,7 +50,16 @@ const GameCell = ({
       tabIndex={disabled ? -1 : 0}
       aria-label={`Cell ${x}, ${y}${value ? `, contains ${value}` : ', empty'}`}
     >
-      {!hidden && value}
+      {!hidden && value !== null && (
+        <span
+          className={clsx(styles.cellValue, {
+            [styles.dropAnimating]: isDropping
+          })}
+          style={dropStyle}
+        >
+          {value}
+        </span>
+      )}
     </div>
   );
 };
@@ -53,6 +71,8 @@ GameCell.propTypes = {
   hidden: PropTypes.bool,
   opacity: PropTypes.number,
   isWinner: PropTypes.bool,
+  isDropping: PropTypes.bool,
+  dropDistance: PropTypes.number,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired
 };

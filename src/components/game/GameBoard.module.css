@@ -79,8 +79,9 @@
 }
 
 .gameBoard.gravity {
-  grid-template-columns: repeat(3, 80px);
-  grid-template-rows: repeat(6, 60px);
+  --gravity-cell-size: 70px;
+  grid-template-columns: repeat(7, 70px);
+  grid-template-rows: repeat(6, 70px);
 }
 
 .gameCell {
@@ -95,6 +96,17 @@
   cursor: pointer;
   transition: var(--transition-fast);
   position: relative;
+}
+
+.cellValue {
+  display: inline-block;
+  will-change: transform;
+}
+
+.dropAnimating {
+  animation: gravityDrop var(--drop-duration, 0.6s) cubic-bezier(0.25, 0.8, 0.4, 1) forwards;
+  transform-origin: top center;
+  z-index: 2;
 }
 
 .gameCell:hover:not(.disabled) {
@@ -146,6 +158,21 @@
 .gameResult.draw {
   background-color: var(--fog-primary);
   color: var(--bg-color);
+}
+
+@keyframes gravityDrop {
+  0% {
+    transform: translateY(calc(-1 * var(--drop-distance, 1) * var(--gravity-cell-size, 60px)));
+  }
+  85% {
+    transform: translateY(4%);
+  }
+  95% {
+    transform: translateY(-2%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .gameControls {
@@ -244,8 +271,9 @@
   }
 
   .gameBoard.gravity {
-    grid-template-columns: repeat(3, 60px);
-    grid-template-rows: repeat(6, 45px);
+    --gravity-cell-size: 55px;
+    grid-template-columns: repeat(7, 55px);
+    grid-template-rows: repeat(6, 55px);
   }
 
   .gameCell {
@@ -271,8 +299,9 @@
   }
 
   .gameBoard.gravity {
-    grid-template-columns: repeat(3, 50px);
-    grid-template-rows: repeat(6, 35px);
+    --gravity-cell-size: 45px;
+    grid-template-columns: repeat(7, 45px);
+    grid-template-rows: repeat(6, 45px);
   }
 
   .gameCell {
