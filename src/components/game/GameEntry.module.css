@@ -56,9 +56,8 @@
 
 .modeTitle {
   font-size: var(--font-size-xxl);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   margin: 0;
-  text-shadow: 2px 2px 0px var(--pixel-green-medium);
 }
 
 .difficultyBadge {
@@ -66,7 +65,7 @@
   font-size: var(--font-size-sm);
   border: var(--pixel-border);
   background-color: var(--pixel-green-light);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -74,7 +73,7 @@
 .modeDescription {
   margin-bottom: var(--space-xl);
   font-size: var(--font-size-md);
-  color: var(--pixel-green-medium);
+  color: var(--highlight-color);
   line-height: 1.6;
 }
 
@@ -138,7 +137,7 @@
 }
 
 .infoCard {
-  background-color: rgba(244, 176, 176, 0.1);
+  background-color: var(--pixel-green-light);
   border: var(--pixel-border);
   padding: var(--space-lg);
   text-align: left;
@@ -146,13 +145,13 @@
 
 .infoCard h3 {
   font-size: var(--font-size-md);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   margin-bottom: var(--space-sm);
 }
 
 .infoCard p {
   font-size: var(--font-size-sm);
-  color: var(--pixel-green-medium);
+  color: var(--text-color);
   line-height: 1.5;
   margin: 0;
 }

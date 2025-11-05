@@ -8,15 +8,14 @@
 
 .pageTitle {
   font-size: var(--font-size-xxl);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   text-align: center;
   margin-bottom: var(--space-lg);
-  text-shadow: 2px 2px 0px var(--pixel-green-medium);
 }
 
 .pageSubtitle {
   font-size: var(--font-size-md);
-  color: var(--pixel-green-medium);
+  color: var(--highlight-color);
   text-align: center;
   margin-bottom: var(--space-xxl);
   max-width: 600px;
@@ -33,7 +32,7 @@
 }
 
 .modeCard {
-  background-color: var(--pixel-green-bright);
+  background-color: var(--bg-color);
   border: var(--pixel-border);
   box-shadow: var(--pixel-shadow);
   padding: var(--space-xl);
@@ -44,6 +43,13 @@
   opacity: 1;
   transform: translateY(0);
   animation: fadeIn 0.6s ease-out forwards;
+}
+
+.modeCard:hover {
+  background-color: var(--pixel-green-light);
+  box-shadow: var(--pixel-shadow-hover);
+  transform: translateY(-4px);
+  border-color: var(--highlight-color);
 }
 
 .modeCard:nth-child(1) {
@@ -94,7 +100,7 @@
   width: 64px;
   height: 64px;
   margin: 0 auto var(--space-lg);
-  background-color: var(--pixel-green-medium);
+  background-color: var(--highlight-color);
   border: var(--pixel-border);
   display: flex;
   align-items: center;
@@ -104,33 +110,33 @@
 }
 
 .modeCard.fading .modeIcon {
-  background-color: var(--fading-primary);
-  border-color: var(--fading-secondary);
-  color: white;
+  background-color: var(--highlight-color);
+  border-color: var(--text-color);
+  color: var(--bg-color);
 }
 
 .modeCard.fog .modeIcon {
   background-color: var(--fog-primary);
   border-color: var(--fog-secondary);
-  color: white;
+  color: var(--bg-color);
 }
 
 .modeCard.gravity .modeIcon {
-  background-color: var(--gravity-primary);
-  border-color: var(--gravity-secondary);
-  color: var(--pixel-green-dark);
+  background-color: var(--highlight-color);
+  border-color: var(--text-color);
+  color: var(--bg-color);
 }
 
 .modeTitle {
   font-size: var(--font-size-lg);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   text-align: center;
   margin-bottom: var(--space-md);
 }
 
 .modeDescription {
   font-size: var(--font-size-sm);
-  color: var(--pixel-green-medium);
+  color: var(--highlight-color);
   text-align: center;
   line-height: 1.5;
   margin-bottom: var(--space-lg);
@@ -141,9 +147,9 @@
   display: inline-block;
   padding: var(--space-xs) var(--space-sm);
   font-size: var(--font-size-xs);
-  border: 1px solid var(--pixel-green-medium);
+  border: 1px solid var(--highlight-color);
   background-color: var(--pixel-green-light);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: var(--space-md);
@@ -174,7 +180,7 @@
 
 .modeFeatures li {
   font-size: var(--font-size-xs);
-  color: var(--pixel-green-medium);
+  color: var(--text-color);
   margin-bottom: var(--space-xs);
   position: relative;
   padding-left: var(--space-md);
@@ -184,7 +190,7 @@
   content: '▸';
   position: absolute;
   left: 0;
-  color: var(--pixel-green-dark);
+  color: var(--highlight-color);
 }
 
 .backButton {

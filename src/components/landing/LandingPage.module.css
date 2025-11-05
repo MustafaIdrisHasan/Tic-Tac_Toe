@@ -17,16 +17,15 @@
 
 .mainTitle {
   font-size: clamp(var(--font-size-lg), 4vw, var(--font-size-xxl));
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   margin-bottom: var(--space-md);
-  text-shadow: 2px 2px 0px var(--pixel-green-medium);
   letter-spacing: 2px;
   line-height: 1.2;
 }
 
 .subtitle {
   font-size: var(--font-size-md);
-  color: var(--pixel-green-medium);
+  color: var(--highlight-color);
   margin-bottom: var(--space-xl);
   opacity: 0;
   animation: fadeIn 1s ease-out 1s forwards;
@@ -105,12 +104,12 @@
 .featureTitle {
   font-size: var(--font-size-md);
   margin-bottom: var(--space-sm);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
 }
 
 .featureDescription {
   font-size: var(--font-size-sm);
-  color: var(--pixel-green-medium);
+  color: var(--highlight-color);
   line-height: 1.4;
 }
 
@@ -149,7 +148,7 @@
 .typewriterText {
   overflow: hidden;
   white-space: nowrap;
-  border-right: 3px solid var(--pixel-green-dark);
+  border-right: 3px solid var(--text-color);
   animation: 
     typewriter 3s steps(20, end) forwards,
     blink 1s infinite 3s;

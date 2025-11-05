@@ -5,8 +5,8 @@
   font-family: var(--font-pixel);
   font-size: var(--font-size-sm);
   padding: var(--space-md) var(--space-lg);
-  background-color: var(--pixel-green-bright);
-  color: var(--pixel-green-dark);
+  background-color: var(--bg-color);
+  color: var(--text-color);
   border: var(--pixel-border);
   box-shadow: var(--pixel-shadow);
   cursor: pointer;
@@ -17,15 +17,16 @@
   overflow: hidden;
 }
 
-.pixelButton:hover {
-  background-color: var(--pixel-green-light);
+.pixelButton:hover:not(:disabled) {
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
   box-shadow: var(--pixel-shadow-hover);
   transform: translateY(-1px);
 }
 
 .pixelButton:active {
   transform: translateY(1px);
-  box-shadow: 2px 2px 0px var(--pixel-green-dark);
+  box-shadow: 0 1px 4px rgba(26, 26, 26, 0.15);
 }
 
 .pixelButton:disabled {
@@ -36,19 +37,23 @@
 }
 
 .pixelButton.primary {
-  background-color: var(--pixel-green-medium);
-  color: var(--pixel-green-bright);
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+.pixelButton.primary:hover:not(:disabled) {
+  background-color: var(--highlight-color);
 }
 
 .pixelButton.secondary {
-  background-color: var(--pixel-green-light);
-  color: var(--pixel-green-dark);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .pixelButton.danger {
-  background-color: var(--fading-primary);
-  color: white;
-  border-color: var(--fading-secondary);
+  background-color: #D32F2F;
+  color: var(--bg-color);
+  border-color: #B71C1C;
 }
 
 .pixelButton.small {
@@ -63,8 +68,8 @@
 
 /* Header styles */
 .header {
-  background-color: var(--pixel-green-dark);
-  color: var(--pixel-green-bright);
+  background-color: var(--bg-color);
+  color: var(--text-color);
   padding: var(--space-md) var(--space-lg);
   border-bottom: var(--pixel-border-thick);
   display: flex;
@@ -73,6 +78,7 @@
   position: sticky;
   top: 0;
   z-index: var(--z-overlay);
+  box-shadow: var(--pixel-shadow);
 }
 
 .headerTitle {
@@ -86,7 +92,7 @@
 }
 
 .headerNavLink {
-  color: var(--pixel-green-bright);
+  color: var(--text-color);
   text-decoration: none;
   padding: var(--space-sm);
   border: 1px solid transparent;
@@ -94,13 +100,13 @@
 }
 
 .headerNavLink:hover {
-  border-color: var(--pixel-green-bright);
-  background-color: rgba(253, 114, 130, 0.1);
+  border-color: var(--highlight-color);
+  background-color: var(--pixel-green-light);
 }
 
 .headerNavLink.active {
-  background-color: var(--pixel-green-bright);
-  color: var(--pixel-green-dark);
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
 }
 
 /* LoadingSpinner styles */
@@ -109,7 +115,7 @@
   width: 32px;
   height: 32px;
   border: 4px solid var(--pixel-green-light);
-  border-top: 4px solid var(--pixel-green-dark);
+  border-top: 4px solid var(--text-color);
   border-radius: 0;
   animation: spin 1s linear infinite;
   image-rendering: pixelated;
@@ -138,7 +144,7 @@
 
 .loadingText {
   font-size: var(--font-size-sm);
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   text-align: center;
 }
 
@@ -149,7 +155,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(92, 21, 118, 0.8);
+  background-color: rgba(26, 26, 26, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -158,7 +164,7 @@
 }
 
 .modalContent {
-  background-color: var(--pixel-green-bright);
+  background-color: var(--bg-color);
   border: var(--pixel-border-thick);
   box-shadow: var(--pixel-shadow-hover);
   padding: var(--space-xl);
@@ -180,6 +186,7 @@
 .modalTitle {
   font-size: var(--font-size-lg);
   margin: 0;
+  color: var(--text-color);
 }
 
 .modalCloseButton {
@@ -187,7 +194,7 @@
   border: none;
   font-size: var(--font-size-lg);
   cursor: pointer;
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   padding: var(--space-xs);
 }
 
@@ -203,7 +210,7 @@
 
 /* Card styles */
 .card {
-  background-color: var(--pixel-green-bright);
+  background-color: var(--bg-color);
   border: var(--pixel-border);
   box-shadow: var(--pixel-shadow);
   padding: var(--space-lg);

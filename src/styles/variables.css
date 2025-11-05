@@ -1,17 +1,23 @@
 :root {
-  /* Color Palette - Pink/Purple Theme */
-  --pixel-green-dark: #5C1576;      /* Deep Purple */
-  --pixel-green-medium: #FC47BB;    /* Accent Pink */
-  --pixel-green-light: #F4B0B0;     /* Light Pink */
-  --pixel-green-bright: #FD7282;    /* Primary Pink */
+  /* Color Palette - Clean Green Theme */
+  --bg-color: #FFFFFF;
+  --grid-color: #1A1A1A;
+  --text-color: #008037;
+  --highlight-color: #00C853;
+  
+  /* Semantic colors */
+  --pixel-green-dark: var(--text-color);
+  --pixel-green-medium: var(--highlight-color);
+  --pixel-green-light: #E8F5E9;
+  --pixel-green-bright: #C8E6C9;
   
   /* Mode-specific colors */
-  --fading-primary: #FC47BB;        /* Accent Pink */
-  --fading-secondary: #F4B0B0;      /* Light Pink */
-  --fog-primary: #5C1576;           /* Deep Purple */
-  --fog-secondary: #010B5D;         /* Navy Blue */
-  --gravity-primary: #FD7282;       /* Primary Pink */
-  --gravity-secondary: #F4B0B0;     /* Light Pink */
+  --fading-primary: var(--highlight-color);
+  --fading-secondary: var(--text-color);
+  --fog-primary: #616161;
+  --fog-secondary: #9E9E9E;
+  --gravity-primary: var(--highlight-color);
+  --gravity-secondary: var(--text-color);
   
   /* Typography */
   --font-pixel: 'Press Start 2P', monospace;
@@ -31,14 +37,11 @@
   --space-xxl: 48px;
   
   /* Borders and Effects */
-  --pixel-border: 2px solid var(--pixel-green-dark);
-  --pixel-border-thick: 4px solid var(--pixel-green-dark);
-  --pixel-shadow: 4px 4px 0px var(--pixel-green-dark);
-  --pixel-shadow-hover: 6px 6px 0px var(--pixel-green-dark);
+  --pixel-border: 2px solid var(--grid-color);
+  --pixel-border-thick: 4px solid var(--grid-color);
+  --pixel-shadow: 0 2px 8px rgba(26, 26, 26, 0.15);
+  --pixel-shadow-hover: 0 4px 12px rgba(26, 26, 26, 0.25);
 
-  /* Additional accent color */
-  --navy-blue: #010B5D;
-  
   /* Animations */
   --transition-fast: 0.15s ease-out;
   --transition-medium: 0.3s ease-out;
