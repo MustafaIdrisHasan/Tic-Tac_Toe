@@ -16,19 +16,31 @@
 }
 
 .mainTitle {
-  font-size: clamp(var(--font-size-lg), 4vw, var(--font-size-xxl));
+  font-size: clamp(var(--font-size-xl), 5vw, 32px);
   color: var(--text-color);
   margin-bottom: var(--space-md);
   letter-spacing: 2px;
   line-height: 1.2;
 }
 
-.subtitle {
+.tagline {
   font-size: var(--font-size-md);
   color: var(--highlight-color);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-color);
   margin-bottom: var(--space-xl);
   opacity: 0;
   animation: fadeIn 1s ease-out 1s forwards;
+  text-transform: uppercase;
 }
 
 .enterButton {
@@ -187,8 +199,13 @@
     letter-spacing: 1px;
   }
   
-  .subtitle {
+  .tagline {
     font-size: var(--font-size-sm);
+    letter-spacing: 0.5px;
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-xs);
   }
   
   .enterButton {
@@ -209,6 +226,10 @@
 @media (max-width: 480px) {
   .mainTitle {
     font-size: var(--font-size-lg);
+  }
+  
+  .tagline {
+    font-size: var(--font-size-xs);
   }
   
   .enterButton {

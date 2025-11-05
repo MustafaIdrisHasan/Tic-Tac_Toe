@@ -8,49 +8,32 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [phraseIndex, setPhraseIndex] = useState(0);
   
-  const phrases = [
-    'TIC-TAC-TOE VARIANTS',
-    'Four Unique Game Modes',
-    'Classic & Modern Twists',
-    'Fading Marks Challenge',
-    'Fog of War Mystery',
-    'Gravity Drop Physics',
-    'Smart AI Opponent',
-    'Retro Pixel Art Style',
-    'Nostalgic Gaming Experience',
-    'Multiple Difficulty Levels',
-    'Challenge Your Mind',
-    'Strategic Gameplay'
-  ];
-  
-  const fullText = phrases[phraseIndex];
+  const text = 'TIC-TAC-TOE VARIANTS';
 
   useEffect(() => {
     let timeout;
     
-    if (!isDeleting && displayedText === fullText) {
+    if (!isDeleting && displayedText === text) {
       // Pause before deleting
       timeout = setTimeout(() => setIsDeleting(true), 2000);
     } else if (isDeleting && displayedText === '') {
-      // Move to next phrase and pause before typing again
-      setPhraseIndex((prev) => (prev + 1) % phrases.length);
+      // Pause before typing again
       timeout = setTimeout(() => setIsDeleting(false), 500);
     } else if (isDeleting) {
       // Delete character
       timeout = setTimeout(() => {
-        setDisplayedText(fullText.substring(0, displayedText.length - 1));
+        setDisplayedText(text.substring(0, displayedText.length - 1));
       }, 50);
     } else {
       // Type character
       timeout = setTimeout(() => {
-        setDisplayedText(fullText.substring(0, displayedText.length + 1));
+        setDisplayedText(text.substring(0, displayedText.length + 1));
       }, 100);
     }
 
     return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, fullText, phrases.length]);
+  }, [displayedText, isDeleting, text]);
 
   const handleEnterGame = () => {
     navigate(ROUTES.MODES);
@@ -87,6 +70,9 @@ const LandingPage = () => {
             </span>
           </h1>
         </div>
+        <p className={styles.tagline}>
+          Classic Tic-Tac-Toe Reimagined with Four Exciting Game Modes - Fading Marks, Fog of War, Gravity Drop & More!
+        </p>
         <p className={styles.subtitle}>Choose Your Challenge</p>
       </div>
 
