@@ -145,13 +145,35 @@
   display: inline-block;
 }
 
+.mainTitle {
+  font-size: clamp(var(--font-size-lg), 4vw, var(--font-size-xxl));
+  color: var(--text-color);
+  margin-bottom: var(--space-md);
+  letter-spacing: 2px;
+  line-height: 1.2;
+  margin: 0;
+}
+
 .typewriterText {
-  overflow: hidden;
+  display: inline-block;
+  font-family: var(--font-pixel);
   white-space: nowrap;
-  border-right: 3px solid var(--text-color);
-  animation: 
-    typewriter 3s steps(20, end) forwards,
-    blink 1s infinite 3s;
+  min-height: 1.5em;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
 }
 
 /* Responsive design */

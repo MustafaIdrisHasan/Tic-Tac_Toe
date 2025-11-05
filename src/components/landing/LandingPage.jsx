@@ -6,16 +6,33 @@ import { ROUTES } from '../../utils/constants';
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const [titleVisible, setTitleVisible] = useState(false);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const fullText = 'TIC-TAC-TOE VARIANTS';
 
   useEffect(() => {
-    // Trigger title animation on mount
-    const timer = setTimeout(() => {
-      setTitleVisible(true);
-    }, 100);
+    let timeout;
+    
+    if (!isDeleting && displayedText === fullText) {
+      // Pause before deleting
+      timeout = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && displayedText === '') {
+      // Pause before typing again
+      timeout = setTimeout(() => setIsDeleting(false), 500);
+    } else if (isDeleting) {
+      // Delete character
+      timeout = setTimeout(() => {
+        setDisplayedText(fullText.substring(0, displayedText.length - 1));
+      }, 50);
+    } else {
+      // Type character
+      timeout = setTimeout(() => {
+        setDisplayedText(fullText.substring(0, displayedText.length + 1));
+      }, 100);
+    }
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, fullText]);
 
   const handleEnterGame = () => {
     navigate(ROUTES.MODES);
@@ -45,8 +62,11 @@ const LandingPage = () => {
       
       <div className={styles.titleContainer}>
         <div className={styles.typewriterContainer}>
-          <h1 className={`${styles.mainTitle} ${titleVisible ? styles.typewriterText : ''}`}>
-            TIC-TAC-TOE VARIANTS
+          <h1 className={styles.mainTitle}>
+            <span className={styles.typewriterText}>
+              {displayedText}
+              <span className={styles.cursor}>|</span>
+            </span>
           </h1>
         </div>
         <p className={styles.subtitle}>Choose Your Challenge</p>

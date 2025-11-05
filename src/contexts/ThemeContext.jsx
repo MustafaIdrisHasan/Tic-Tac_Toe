@@ -25,13 +25,20 @@ export const ThemeProvider = ({ children }) => {
     } else {
       document.documentElement.classList.remove('dark-mode');
     }
-    
-    // Save to settings
-    updateSetting('darkMode', darkMode);
-  }, [darkMode, updateSetting]);
+  }, [darkMode]);
+
+  useEffect(() => {
+    // Initialize dark mode from settings on mount only
+    if (settings.darkMode !== undefined) {
+      setDarkMode(settings.darkMode);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const toggleDarkMode = () => {
-    setDarkMode(prev => !prev);
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    updateSetting('darkMode', newDarkMode);
   };
 
   return (
