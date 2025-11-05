@@ -24,6 +24,18 @@ body {
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   transition: background-color var(--transition-medium), color var(--transition-medium);
+  position: relative;
+}
+
+/* 80s Dark Mode Neon Text Glow */
+.dark-mode body {
+  text-shadow: 0 0 5px currentColor;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3 {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
 }
 
 #root {
@@ -65,6 +77,15 @@ a {
 
 a:hover {
   color: var(--highlight-color);
+}
+
+/* Dark Mode Link Glow */
+.dark-mode a {
+  text-shadow: 0 0 5px currentColor;
+}
+
+.dark-mode a:hover {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
 }
 
 /* Buttons */

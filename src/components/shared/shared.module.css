@@ -167,14 +167,34 @@
   transform: translateY(-1px);
 }
 
-/* Dark mode adjustments for header */
+/* Dark mode adjustments for header - 80s Neon Style */
+.dark-mode .header {
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+  border-bottom-color: var(--accent-cyan);
+}
+
+.dark-mode .headerNavLink {
+  border-color: transparent;
+  text-shadow: 0 0 5px currentColor;
+}
+
 .dark-mode .headerNavLink:hover {
-  background-color: var(--pixel-green-light);
+  background-color: rgba(0, 255, 255, 0.1);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-cyan);
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
 }
 
 .dark-mode .headerNavLink.active {
   background-color: var(--highlight-color);
   color: var(--bg-color);
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 15px var(--highlight-color), 0 0 30px var(--highlight-color);
+  text-shadow: none;
+}
+
+.dark-mode .headerTitleLink {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
 }
 
 /* LoadingSpinner styles */

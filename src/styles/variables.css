@@ -1,23 +1,27 @@
 :root {
-  /* Color Palette - Clean Green Theme (Light Mode) */
-  --bg-color: #FFFFFF;
-  --grid-color: #1A1A1A;
-  --text-color: #008037;
-  --highlight-color: #00C853;
+  /* 80s Retro Light Mode - Arcade Cabinet Style */
+  --bg-color: #F5F5DC;  /* Beige/cream - like old arcade cabinets */
+  --bg-secondary: #E8E8D0;
+  --grid-color: #2C1810;  /* Dark brown - classic arcade trim */
+  --text-color: #D4001A;  /* Bright red - arcade button red */
+  --highlight-color: #FF6B00;  /* Orange - classic arcade accent */
+  --accent-cyan: #00B8D4;
+  --accent-magenta: #D500F9;
+  --accent-yellow: #FFD600;
   
   /* Semantic colors */
-  --pixel-green-dark: var(--text-color);
-  --pixel-green-medium: var(--highlight-color);
-  --pixel-green-light: #E8F5E9;
-  --pixel-green-bright: #C8E6C9;
+  --pixel-green-dark: #00695C;
+  --pixel-green-medium: #00BFA5;
+  --pixel-green-light: #B2DFDB;
+  --pixel-green-bright: #1DE9B6;
   
   /* Mode-specific colors */
-  --fading-primary: var(--highlight-color);
-  --fading-secondary: var(--text-color);
-  --fog-primary: #616161;
-  --fog-secondary: #9E9E9E;
-  --gravity-primary: var(--highlight-color);
-  --gravity-secondary: var(--text-color);
+  --fading-primary: var(--accent-magenta);
+  --fading-secondary: var(--accent-cyan);
+  --fog-primary: #757575;
+  --fog-secondary: #BDBDBD;
+  --gravity-primary: var(--accent-cyan);
+  --gravity-secondary: #00695C;
   
   /* Typography */
   --font-pixel: 'Press Start 2P', monospace;
@@ -37,10 +41,12 @@
   --space-xxl: 48px;
   
   /* Borders and Effects */
-  --pixel-border: 2px solid var(--grid-color);
-  --pixel-border-thick: 4px solid var(--grid-color);
-  --pixel-shadow: 0 2px 8px rgba(26, 26, 26, 0.15);
-  --pixel-shadow-hover: 0 4px 12px rgba(26, 26, 26, 0.25);
+  --pixel-border: 3px solid var(--grid-color);
+  --pixel-border-thick: 5px solid var(--grid-color);
+  --pixel-shadow: 4px 4px 0 var(--grid-color);
+  --pixel-shadow-hover: 6px 6px 0 var(--grid-color);
+  --neon-glow: 0 0 5px currentColor, 0 0 10px currentColor;
+  --neon-glow-strong: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
 
   /* Animations */
   --transition-fast: 0.15s ease-out;
@@ -54,75 +60,126 @@
   --z-modal: 1000;
 }
 
-/* Dark Mode */
+/* Dark Mode - 80s Neon CRT Aesthetic */
 .dark-mode {
-  /* Color Palette - Dark Mode with Gray Whites */
-  --bg-color: #2A2A2A;
-  --grid-color: #E0E0E0;
-  --text-color: #00C853;
-  --highlight-color: #00E676;
+  /* 80s Neon CRT Monitor Style */
+  --bg-color: #0A0E27;  /* Deep blue-black - CRT screen off */
+  --bg-secondary: #151932;
+  --grid-color: #00FFFF;  /* Bright cyan - classic neon */
+  --text-color: #00FF41;  /* Matrix green - bright neon green */
+  --highlight-color: #FF10F0;  /* Hot magenta - neon pink */
+  --accent-cyan: #00FFFF;
+  --accent-magenta: #FF10F0;
+  --accent-yellow: #FFFF00;
   
-  /* Semantic colors - darker greens */
-  --pixel-green-dark: #00C853;
-  --pixel-green-medium: #00E676;
-  --pixel-green-light: #1B5E20;
-  --pixel-green-bright: #2E7D32;
+  /* Semantic colors - neon vibes */
+  --pixel-green-dark: #00FF41;
+  --pixel-green-medium: #39FF14;  /* Electric lime */
+  --pixel-green-light: #0D2818;
+  --pixel-green-bright: #00FF41;
   
-  /* Mode-specific colors */
-  --fading-primary: #00E676;
-  --fading-secondary: #00C853;
-  --fog-primary: #B0B0B0;
-  --fog-secondary: #D0D0D0;
-  --gravity-primary: #00E676;
-  --gravity-secondary: #00C853;
+  /* Mode-specific colors - pure neon */
+  --fading-primary: #FF10F0;
+  --fading-secondary: #00FFFF;
+  --fog-primary: #A0A0FF;  /* Light blue fog */
+  --fog-secondary: #C0C0FF;
+  --gravity-primary: #00FFFF;
+  --gravity-secondary: #FF10F0;
   
-  /* Shadows adjusted for dark mode */
-  --pixel-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --pixel-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.6);
+  /* Neon Shadows and Glows */
+  --pixel-shadow: 0 0 10px var(--text-color), 0 0 20px var(--text-color), 4px 4px 0 rgba(0, 255, 65, 0.3);
+  --pixel-shadow-hover: 0 0 15px var(--highlight-color), 0 0 30px var(--highlight-color), 6px 6px 0 rgba(255, 16, 240, 0.4);
+  --neon-glow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  --neon-glow-strong: 0 0 15px currentColor, 0 0 30px currentColor, 0 0 45px currentColor, 0 0 60px currentColor;
 }
 
-/* Dark mode button backgrounds */
+/* Dark mode button backgrounds with neon glow */
 .dark-mode .pixelButton {
-  background-color: #3A3A3A;
+  background-color: #1A1A3E;
   color: var(--text-color);
+  box-shadow: var(--neon-glow);
+  border-color: var(--text-color);
 }
 
 .dark-mode .pixelButton.primary {
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+  border-color: var(--text-color);
+  box-shadow: var(--neon-glow);
 }
 
 .dark-mode .pixelButton:hover:not(:disabled) {
   background-color: var(--highlight-color);
   color: var(--bg-color);
+  box-shadow: var(--neon-glow-strong);
+  border-color: var(--highlight-color);
+  transform: translateY(-2px);
 }
 
 .dark-mode .pixelButton.secondary {
-  background-color: #3A3A3A;
-  color: var(--text-color);
+  background-color: transparent;
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-cyan);
 }
 
 .dark-mode .pixelButton.secondary:hover:not(:disabled) {
-  background-color: var(--highlight-color);
+  background-color: var(--accent-cyan);
   color: var(--bg-color);
+  box-shadow: 0 0 15px var(--accent-cyan), 0 0 30px var(--accent-cyan), 0 0 45px var(--accent-cyan);
 }
 
-/* Dark mode card backgrounds */
+/* Dark mode card backgrounds with neon borders */
 .dark-mode .card {
-  background-color: #3A3A3A;
+  background-color: rgba(21, 25, 50, 0.8);
   border-color: var(--grid-color);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 .dark-mode .modalContent {
-  background-color: #2A2A2A;
+  background-color: var(--bg-color);
   border-color: var(--grid-color);
+  box-shadow: 0 0 20px var(--accent-cyan), 0 0 40px var(--accent-cyan);
 }
 
-/* Dark mode feature cards */
+/* Dark mode feature cards with glow */
 .dark-mode .featureCard {
-  background-color: rgba(30, 30, 30, 0.8);
+  background-color: rgba(21, 25, 50, 0.6);
+  border-color: var(--text-color);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
 }
 
 .dark-mode .featureCard:hover {
-  background-color: rgba(40, 40, 40, 0.9);
+  background-color: rgba(21, 25, 50, 0.9);
+  box-shadow: 0 0 20px var(--text-color), 0 0 30px var(--text-color);
+  transform: translateY(-4px);
+}
+
+/* Scanline effect for authentic CRT feel */
+.dark-mode::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 255, 0.03) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 255, 255, 0.03) 3px
+  );
+  z-index: 9999;
+  animation: scanlines 10s linear infinite;
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
 }
