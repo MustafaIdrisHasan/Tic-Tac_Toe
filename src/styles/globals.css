@@ -17,13 +17,8 @@ body {
   font-family: var(--font-pixel);
   font-size: var(--font-size-md);
   line-height: 1.6;
-  color: var(--pixel-green-dark);
-  background-color: var(--pixel-green-bright);
-  background-image:
-    radial-gradient(circle at 25% 25%, var(--pixel-green-light) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, var(--pixel-green-medium) 1px, transparent 1px);
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
+  color: var(--text-color);
+  background-color: var(--bg-color);
   min-height: 100vh;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -62,13 +57,13 @@ p {
 
 /* Links */
 a {
-  color: var(--pixel-green-dark);
+  color: var(--text-color);
   text-decoration: none;
   transition: var(--transition-fast);
 }
 
 a:hover {
-  color: var(--pixel-green-medium);
+  color: var(--highlight-color);
 }
 
 /* Buttons */
@@ -92,13 +87,13 @@ input, select, textarea {
   font-size: var(--font-size-sm);
   border: var(--pixel-border);
   padding: var(--space-sm);
-  background-color: var(--pixel-green-bright);
-  color: var(--pixel-green-dark);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: var(--pixel-green-medium);
+  border-color: var(--highlight-color);
   box-shadow: var(--pixel-shadow);
 }
 

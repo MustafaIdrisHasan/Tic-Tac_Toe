@@ -36,10 +36,13 @@ export class FadingGame extends BaseGame {
   }
   
   makeMove(x, y, player = this.currentPlayer) {
+    // Age all marks BEFORE making the new move (marks fade at start of turn)
+    this.ageAllMarks();
+    
     const success = super.makeMove(x, y, player);
     if (success) {
+      // New mark starts at full lifespan
       this.markAges[y][x] = this.markLifespan;
-      this.ageAllMarks();
     }
     return success;
   }
