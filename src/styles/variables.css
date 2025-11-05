@@ -1,5 +1,5 @@
 :root {
-  /* Color Palette - Clean Green Theme */
+  /* Color Palette - Clean Green Theme (Light Mode) */
   --bg-color: #FFFFFF;
   --grid-color: #1A1A1A;
   --text-color: #008037;
@@ -52,4 +52,77 @@
   --z-content: 10;
   --z-overlay: 100;
   --z-modal: 1000;
+}
+
+/* Dark Mode */
+.dark-mode {
+  /* Color Palette - Dark Mode with Gray Whites */
+  --bg-color: #2A2A2A;
+  --grid-color: #E0E0E0;
+  --text-color: #00C853;
+  --highlight-color: #00E676;
+  
+  /* Semantic colors - darker greens */
+  --pixel-green-dark: #00C853;
+  --pixel-green-medium: #00E676;
+  --pixel-green-light: #1B5E20;
+  --pixel-green-bright: #2E7D32;
+  
+  /* Mode-specific colors */
+  --fading-primary: #00E676;
+  --fading-secondary: #00C853;
+  --fog-primary: #B0B0B0;
+  --fog-secondary: #D0D0D0;
+  --gravity-primary: #00E676;
+  --gravity-secondary: #00C853;
+  
+  /* Shadows adjusted for dark mode */
+  --pixel-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --pixel-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Dark mode button backgrounds */
+.dark-mode .pixelButton {
+  background-color: #3A3A3A;
+  color: var(--text-color);
+}
+
+.dark-mode .pixelButton.primary {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+.dark-mode .pixelButton:hover:not(:disabled) {
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
+}
+
+.dark-mode .pixelButton.secondary {
+  background-color: #3A3A3A;
+  color: var(--text-color);
+}
+
+.dark-mode .pixelButton.secondary:hover:not(:disabled) {
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
+}
+
+/* Dark mode card backgrounds */
+.dark-mode .card {
+  background-color: #3A3A3A;
+  border-color: var(--grid-color);
+}
+
+.dark-mode .modalContent {
+  background-color: #2A2A2A;
+  border-color: var(--grid-color);
+}
+
+/* Dark mode feature cards */
+.dark-mode .featureCard {
+  background-color: rgba(30, 30, 30, 0.8);
+}
+
+.dark-mode .featureCard:hover {
+  background-color: rgba(40, 40, 40, 0.9);
 }

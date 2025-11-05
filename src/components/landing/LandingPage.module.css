@@ -72,9 +72,9 @@
   background-color: rgba(244, 176, 176, 0.1);
   border: var(--pixel-border);
   padding: var(--space-lg);
-  transition: var(--transition-medium);
   opacity: 1;
   transform: translateY(0);
+  transition: background-color var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
 }
 
 .featureCard:nth-child(1) {

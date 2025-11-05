@@ -79,11 +79,57 @@
   top: 0;
   z-index: var(--z-overlay);
   box-shadow: var(--pixel-shadow);
+  transition: background-color var(--transition-medium), color var(--transition-medium);
+}
+
+.headerTitleContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.headerLogo {
+  height: 40px;
+  width: auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transition: transform var(--transition-fast);
+}
+
+.headerLogo:hover {
+  transform: scale(1.1);
 }
 
 .headerTitle {
   font-size: var(--font-size-lg);
   margin: 0;
+}
+
+.headerTitleLink {
+  color: var(--text-color);
+  text-decoration: none;
+  display: inline-block;
+  transition: color var(--transition-fast);
+}
+
+.headerTitleLink:hover {
+  color: var(--highlight-color);
+}
+
+.typewriterContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.typewriterText {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--text-color);
+  animation: 
+    typewriter 2.5s steps(20, end) forwards,
+    blink 1s infinite 2.5s;
+  display: inline-block;
 }
 
 .headerNav {
@@ -94,17 +140,39 @@
 .headerNavLink {
   color: var(--text-color);
   text-decoration: none;
-  padding: var(--space-sm);
-  border: 1px solid transparent;
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid transparent;
   transition: var(--transition-fast);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
 }
 
 .headerNavLink:hover {
   border-color: var(--highlight-color);
   background-color: var(--pixel-green-light);
+  transform: translateY(-1px);
 }
 
 .headerNavLink.active {
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
+  border-color: var(--highlight-color);
+  box-shadow: var(--pixel-shadow);
+}
+
+.headerNavLink.active:hover {
+  background-color: var(--pixel-green-medium);
+  transform: translateY(-1px);
+}
+
+/* Dark mode adjustments for header */
+.dark-mode .headerNavLink:hover {
+  background-color: var(--pixel-green-light);
+}
+
+.dark-mode .headerNavLink.active {
   background-color: var(--highlight-color);
   color: var(--bg-color);
 }
@@ -247,6 +315,16 @@
 @media (max-width: 768px) {
   .header {
     padding: var(--space-sm) var(--space-md);
+    flex-wrap: wrap;
+  }
+  
+  .headerTitleContainer {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  
+  .headerLogo {
+    height: 32px;
   }
   
   .headerTitle {
@@ -255,6 +333,18 @@
   
   .headerNav {
     gap: var(--space-sm);
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--space-sm);
+  }
+  
+  .headerNavLink {
+    font-size: var(--font-size-xs);
+    padding: var(--space-xs) var(--space-sm);
+  }
+  
+  .typewriterText {
+    animation-duration: 2s, 1s;
   }
   
   .modalContent {
@@ -265,5 +355,16 @@
   .pixelButton {
     padding: var(--space-sm) var(--space-md);
     font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .headerTitle {
+    font-size: var(--font-size-sm);
+  }
+  
+  .headerNavLink {
+    font-size: var(--font-size-xs);
+    padding: var(--space-xs);
   }
 }

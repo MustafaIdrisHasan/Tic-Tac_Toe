@@ -1,11 +1,12 @@
 .settingsPage {
-  min-height: 100vh;
-  padding: 2rem;
+  min-height: calc(100vh - 80px);
+  padding: var(--space-xl);
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: var(--bg-color, #1a1a2e);
-  color: var(--text-color, #fff);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-medium), color var(--transition-medium);
 }
 
 .settingsContainer {
@@ -14,36 +15,38 @@
 }
 
 .pageTitle {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 2rem;
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-xxl);
   text-align: center;
-  margin-bottom: 3rem;
-  color: var(--primary-color, #0f0);
-  text-shadow: 3px 3px 0 var(--shadow-color, #000);
+  margin-bottom: var(--space-xxl);
+  color: var(--text-color);
+  letter-spacing: 2px;
 }
 
 .settingsSection {
-  background: var(--card-bg, #16213e);
-  border: 3px solid var(--border-color, #0f0);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 5px 5px 0 var(--shadow-color, #000);
+  background-color: var(--bg-color);
+  border: var(--pixel-border-thick);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--pixel-shadow);
+  transition: background-color var(--transition-medium), border-color var(--transition-medium);
 }
 
 .sectionTitle {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 1rem;
-  color: var(--primary-color, #0f0);
-  margin-bottom: 1.5rem;
+  font-family: var(--font-pixel);
+  font-size: var(--font-size-lg);
+  color: var(--text-color);
+  margin-bottom: var(--space-lg);
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .settingItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border-color, #333);
+  padding: var(--space-lg) 0;
+  border-bottom: var(--pixel-border);
 }
 
 .settingItem:last-child {
@@ -57,48 +60,54 @@
 
 .settingLabel {
   display: block;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: var(--text-color, #fff);
+  font-size: var(--font-size-md);
+  font-weight: normal;
+  margin-bottom: var(--space-sm);
+  color: var(--text-color);
+  font-family: var(--font-pixel);
+  letter-spacing: 1px;
 }
 
 .settingDescription {
-  font-size: 0.9rem;
-  color: var(--text-secondary, #aaa);
+  font-size: var(--font-size-sm);
+  color: var(--pixel-green-dark);
   margin: 0;
+  line-height: 1.4;
 }
 
 .toggleButton {
   width: 60px;
   height: 30px;
-  background: var(--bg-secondary, #333);
-  border: 2px solid var(--border-color, #0f0);
-  border-radius: 15px;
+  background-color: var(--pixel-green-light);
+  border: var(--pixel-border);
+  border-radius: 0;
   position: relative;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
   padding: 0;
+  box-shadow: var(--pixel-shadow);
 }
 
 .toggleButton:hover {
-  background: var(--bg-secondary, #444);
+  background-color: var(--pixel-green-bright);
+  border-color: var(--highlight-color);
 }
 
 .toggleButton.active {
-  background: var(--primary-color, #0f0);
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
 }
 
 .toggleSlider {
   position: absolute;
-  top: 3px;
-  left: 3px;
+  top: 2px;
+  left: 2px;
   width: 22px;
   height: 22px;
-  background: var(--text-color, #fff);
-  border-radius: 50%;
-  transition: transform 0.3s;
-  box-shadow: 2px 2px 0 var(--shadow-color, #000);
+  background-color: var(--bg-color);
+  border: var(--pixel-border);
+  transition: transform var(--transition-fast);
+  box-shadow: var(--pixel-shadow);
 }
 
 .toggleButton.active .toggleSlider {
@@ -117,8 +126,8 @@
 .actions {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 3rem;
+  gap: var(--space-md);
+  margin-top: var(--space-xxl);
 }
 
 .resetButton,
@@ -128,22 +137,22 @@
 
 @media (max-width: 768px) {
   .settingsPage {
-    padding: 1rem;
+    padding: var(--space-lg);
   }
 
   .pageTitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-xl);
   }
 
   .settingsSection {
-    padding: 1.5rem;
+    padding: var(--space-lg);
   }
 
   .settingItem {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: var(--space-md);
   }
 
   .settingInfo {

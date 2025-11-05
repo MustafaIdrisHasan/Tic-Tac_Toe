@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PixelButton from '../shared/PixelButton';
 import { useGameSettings } from '../../hooks/useLocalStorage';
+import { useTheme } from '../../contexts/ThemeContext';
 import { soundManager } from '../../utils/soundManager';
 import { AI_DIFFICULTIES } from '../../utils/constants';
 import { ROUTES } from '../../utils/constants';
@@ -10,6 +11,7 @@ import styles from './Settings.module.css';
 const Settings = () => {
   const navigate = useNavigate();
   const { settings, updateSetting, resetSettings } = useGameSettings();
+  const { darkMode, toggleDarkMode } = useTheme();
 
   const handleBackToHome = () => {
     navigate(ROUTES.HOME);
@@ -26,6 +28,11 @@ const Settings = () => {
 
   const handleAnimationsToggle = () => {
     updateSetting('animationsEnabled', !settings.animationsEnabled);
+    soundManager.play('click');
+  };
+
+  const handleDarkModeToggle = () => {
+    toggleDarkMode();
     soundManager.play('click');
   };
 
@@ -98,6 +105,21 @@ const Settings = () => {
 
         <div className={styles.settingsSection}>
           <h2 className={styles.sectionTitle}>Visual</h2>
+          <div className={styles.settingItem}>
+            <div className={styles.settingInfo}>
+              <label className={styles.settingLabel}>Dark Mode</label>
+              <p className={styles.settingDescription}>
+                Switch to dark mode for a more comfortable viewing experience
+              </p>
+            </div>
+            <button
+              className={`${styles.toggleButton} ${darkMode ? styles.active : ''}`}
+              onClick={handleDarkModeToggle}
+              aria-label={`Dark mode: ${darkMode ? 'On' : 'Off'}`}
+            >
+              <span className={styles.toggleSlider} />
+            </button>
+          </div>
           <div className={styles.settingItem}>
             <div className={styles.settingInfo}>
               <label className={styles.settingLabel}>Animations</label>

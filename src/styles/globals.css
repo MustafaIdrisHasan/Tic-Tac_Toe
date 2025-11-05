@@ -23,6 +23,7 @@ body {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+  transition: background-color var(--transition-medium), color var(--transition-medium);
 }
 
 #root {
