@@ -123,6 +123,15 @@
   min-width: 80px;
 }
 
+.themeButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.themeButton {
+  min-width: 100px;
+}
+
 .actions {
   display: flex;
   justify-content: center;
@@ -170,6 +179,15 @@
   }
 
   .difficultyButton {
+    flex: 1;
+  }
+
+  .themeButtons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .themeButton {
     flex: 1;
   }
 

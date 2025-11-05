@@ -125,7 +125,8 @@ export const useGameSettings = () => {
     autoSave: true,
     theme: 'pixel',
     difficulty: 'medium',
-    darkMode: false
+    darkMode: false,
+    themeMode: 'normal'
   });
 
   const updateSetting = (key, value) => {

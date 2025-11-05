@@ -89,7 +89,7 @@
 }
 
 .headerLogo {
-  height: 40px;
+  height: 60px;
   width: auto;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -102,7 +102,7 @@
 }
 
 .headerTitle {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   margin: 0;
 }
 
@@ -344,7 +344,7 @@
   }
   
   .headerLogo {
-    height: 32px;
+    height: 48px;
   }
   
   .headerTitle {

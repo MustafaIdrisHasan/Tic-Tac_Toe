@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PixelButton from '../shared/PixelButton';
 import { useGameSettings } from '../../hooks/useLocalStorage';
-import { useTheme } from '../../contexts/ThemeContext';
+import { useTheme, THEME_MODES } from '../../contexts/ThemeContext';
 import { soundManager } from '../../utils/soundManager';
 import { AI_DIFFICULTIES } from '../../utils/constants';
 import { ROUTES } from '../../utils/constants';
@@ -11,7 +11,7 @@ import styles from './Settings.module.css';
 const Settings = () => {
   const navigate = useNavigate();
   const { settings, updateSetting, resetSettings } = useGameSettings();
-  const { darkMode, toggleDarkMode } = useTheme();
+  const { darkMode, toggleDarkMode, themeMode, setTheme, isTransitioning } = useTheme();
 
   const handleBackToHome = () => {
     navigate(ROUTES.HOME);
@@ -33,6 +33,11 @@ const Settings = () => {
 
   const handleDarkModeToggle = () => {
     toggleDarkMode();
+    soundManager.play('click');
+  };
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
     soundManager.play('click');
   };
 
@@ -105,6 +110,34 @@ const Settings = () => {
 
         <div className={styles.settingsSection}>
           <h2 className={styles.sectionTitle}>Visual</h2>
+          <div className={styles.settingItem}>
+            <div className={styles.settingInfo}>
+              <label className={styles.settingLabel}>Theme Style</label>
+              <p className={styles.settingDescription}>
+                Choose between modern and retro CRT display styles (VHS transition)
+              </p>
+            </div>
+            <div className={styles.themeButtons}>
+              <PixelButton
+                variant={themeMode === THEME_MODES.NORMAL ? 'primary' : 'secondary'}
+                size="small"
+                onClick={() => handleThemeChange(THEME_MODES.NORMAL)}
+                disabled={isTransitioning}
+                className={styles.themeButton}
+              >
+                📱 Modern
+              </PixelButton>
+              <PixelButton
+                variant={themeMode === THEME_MODES.OLD_SCHOOL ? 'primary' : 'secondary'}
+                size="small"
+                onClick={() => handleThemeChange(THEME_MODES.OLD_SCHOOL)}
+                disabled={isTransitioning}
+                className={styles.themeButton}
+              >
+                📺 Old School
+              </PixelButton>
+            </div>
+          </div>
           <div className={styles.settingItem}>
             <div className={styles.settingInfo}>
               <label className={styles.settingLabel}>Dark Mode</label>
